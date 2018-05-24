@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<title>Completar Datos</title>
+	</head>
+
+	<body>
+		<h1>Formulario muy importante</h1>
+		<form action="/comprobarFormulario">
+		
+			<input name="nombre" type="text" placeholder="Ingrese su nombre" th:value="${nombrePreCargado}"></input>
+			<input name="dni" type="text" placeholder="Ingrese su DNI" th:value="${dniPreCargado}"></input>
+			<input name="email" type="email" placeholder="ingrese su e-mail" th:value="${emailPreCargado}"></input>
+			<input name="comentario" type="text" placeholder="Deje un comentario" th:value="${comentarioPreCargado}"></input>
+			<input type="submit"></input>
+		
+		</form>
+		
+	</body>
+
+</html>

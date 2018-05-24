@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Listado Componentes</title>
+		<link rel="stylesheet" type="text/css" href="/css/estilos.css"></link>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		
+		<script src="/js/listado.js"></script>
+		<meta charset="UTF-8"></meta>
+	</head>
+
+	<body>
+		<form action="/busquedaC">
+			<input type="text" name="palabraBuscada"></input>
+			<input type="submit" value="Buscar"></input>
+			<input type="checkbox" value="Marcar Todos" id="cb"></input>
+		</form>
+		<div class="tarjeta-componente" th:each="componente:${listadoComponentes}">
+			<!-- <div th:class="'inside ' + ${componente.marca== 'nvidia' ? 'nvidia' : (componente.marca=='intel'? 'intel': 'AMD')}">-->
+				<a th:href="'detalleC/' + ${componente.id}"  th:text="${componente.modelo}"></a><br></br>
+				<label>Tipo:</label><label th:text="${componente.tipo}"></label><br></br>
+				<label>Marca:</label><label th:text="${componente.marca}"></label><br></br>
+				<label>Precio</label><label th:text="${componente.precio}"></label><br></br>
+			<a th:href=" 'eliminar/' + ${componente.id}">X</a>
+			</div>
+		<!-- </div>	-->
+	</body>
+
+</html>

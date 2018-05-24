@@ -1,0 +1,119 @@
+.verde{
+	color: green;
+}
+.azul{
+	color:blue;
+}
+
+#etiqueta-secundaria{
+	font-size:84px;
+}
+
+.subrayado{
+	text-decoration:underline;
+}
+
+label{
+	margin: 20px;
+	padding 20px;
+}
+
+p.verde{
+	background-color:yellow;
+}
+
+p.subrayado, span.verde{
+	border-style:solid;
+	padding:10px;
+	margin:5px;
+}
+
+
+#logo{
+	width:60%;
+	height:auto;
+}
+
+#header{
+	background-color:#62cbe5;
+	border-style:solid;
+}
+
+#cuerpo{
+	width:100%;
+	height:auto;
+	padding:10px;
+}
+
+#shigeru{
+	padding:5px;
+	width:100%;
+	height:auto;
+}
+
+#texto-lateral{
+	margin-top:15px;
+	text-align:center;
+	width:100%;
+}
+
+#pagina{
+	background-color:#1552b5;
+}
+
+.txt{
+	border-style:solid;
+	border-radius:5px;
+	background-color:white;
+	padding:10px;
+}
+
+#fortnite{
+	background-color:#1552b5;
+}
+
+#img2{
+	padding:5px;
+}
+
+#lateral{
+	padding-bottom:410px;
+}
+
+#footer{
+	background-color:#93bcff;
+	padding:20px;
+}
+
+.tarjeta-usuario{
+	border-style:solid;
+}
+
+.nvidia:hover{
+	background-color:#6ce868;
+}
+.intel:hover{
+	background-color:#92b6ef;
+}
+.AMD:hover{
+	background-color:#f23e3e;
+}
+
+.tarjeta-usuario:hover{
+	background-color:#c43838;
+}
+
+.seleccionada{
+	background-color:#3ed633;
+}
+
+.tarjeta-componente{
+	border-style:solid;
+	border-radius:5px;
+	background-color:white;
+	padding:10px;
+}
+
+.inside{
+	padding:10px;
+}

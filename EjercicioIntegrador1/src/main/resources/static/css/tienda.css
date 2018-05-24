@@ -1,0 +1,35 @@
+#logo{
+	width:60%;
+	height:auto;
+}
+
+#header{
+	background-color:#9a9e9e;
+	border-style:solid;
+}
+
+#categorias{
+	border-style:solid;
+	border-radius:5px;
+}
+
+#cuerpo{
+	border-style:solid;
+}
+
+
+.item-lista {
+  position: relative;
+  display: block;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.tarjeta-componente{
+	border-style:solid;
+	border-radius:5px;
+	background-color:white;
+	padding:10px;
+}
