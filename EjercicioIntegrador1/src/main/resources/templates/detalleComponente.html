@@ -8,7 +8,7 @@
 
 	<body>
 		<div class="tarjeta-componente">
-			<div th:if="${velocidad!=null}">
+			<div th:if="${velocidad!=null}"> <!-- si null, no muestra -->
 				<label>Velocidad: </label><label th:text="${velocidad}"></label><br></br>
 			</div>
 			 <label>Tipo: </label><label th:text="${tipo}"></label><br></br>
