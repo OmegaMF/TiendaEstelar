@@ -50,11 +50,11 @@ public class ExampleController
 		return m;
 	}
 	
-	@GetMapping("/")
+	/*@GetMapping("/")
 	public String Bienvenida() 
 	{
 		return "paginaBienvenida";
-	}
+	}*/
 	
 	@GetMapping("/completar-datos")
 	public String completar()

@@ -349,9 +349,11 @@ Connection connection;
 		return "home";
 	}
 	
-	@GetMapping("/tienda")
+	@GetMapping("/")
 	public String Pagina()
 	{
 		return "paginaPrincipal";
 	}
+	
+	//dividir el precio en 100
 }
