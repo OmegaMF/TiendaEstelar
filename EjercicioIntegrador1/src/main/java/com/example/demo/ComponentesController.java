@@ -32,7 +32,7 @@ public class ComponentesController
 	{
 Connection connection;
 		
-		connection=DriverManager.getConnection(env.getProperty("jspring.datasource.url"),env.getProperty("spring.datasource.username"),env.getProperty("spring.datasource.password"));
+		connection=DriverManager.getConnection(env.getProperty("spring.datasource.url"),env.getProperty("spring.datasource.username"),env.getProperty("spring.datasource.password"));
 		
 		PreparedStatement consulta = 
 				connection.prepareStatement("SELECT * FROM componentes WHERE id=?;");
@@ -51,9 +51,11 @@ Connection connection;
 	public String detalleC(Model template, @PathVariable int id) throws SQLException
 	{
 		
+		System.out.print("gfdrdsre");
+		
 Connection connection;
 		
-		connection=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Ejemplo","postgres","admin");
+		connection=DriverManager.getConnection(env.getProperty("spring.datasource.url"),env.getProperty("spring.datasource.username"),env.getProperty("spring.datasource.password"));
 		
 		PreparedStatement consulta = 
 				connection.prepareStatement("SELECT * FROM componentes WHERE id=?;");
@@ -107,8 +109,9 @@ Connection connection;
 		
 Connection connection;
 		
-		connection=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Ejemplo","postgres","admin");
+		connection=DriverManager.getConnection(env.getProperty("spring.datasource.url"),env.getProperty("spring.datasource.username"),env.getProperty("spring.datasource.password"));
 		
+
 		PreparedStatement consulta = 
 				connection.prepareStatement("SELECT * FROM componentes;");
 		
@@ -155,9 +158,9 @@ Connection connection;
 	
 	
 	@GetMapping("/insertar-componente")
-	public String insertarComponente(@RequestParam String tipo, @RequestParam String marca,@RequestParam String modelo,@RequestParam String velocidad
-			,@RequestParam String familia,@RequestParam String socket,@RequestParam int nucleos,@RequestParam String tamanio,@RequestParam String capacidad
-			,@RequestParam boolean certificada, int precio) throws SQLException
+	public String insertarComponente(@RequestParam String tipo, @RequestParam String marca,@RequestParam String modelo,@RequestParam(required=false) String velocidad
+			,@RequestParam(required=false) String familia,@RequestParam(required=false) String socket,@RequestParam(required=false) int nucleos,@RequestParam(required=false) String tamanio,@RequestParam(required=false) String capacidad
+			,@RequestParam(required=false) boolean certificada, int precio) throws SQLException
 	{
 		
 		
@@ -165,7 +168,7 @@ Connection connection;
 		
 		Connection connection;
 		
-		connection=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Ejemplo","postgres","admin");
+		connection=DriverManager.getConnection(env.getProperty("spring.datasource.url"),env.getProperty("spring.datasource.username"),env.getProperty("spring.datasource.password"));
 		
 		PreparedStatement consulta = 
 				connection.prepareStatement("INSERT INTO componentes(tipo,marca,modelo,velocidad,familia,socket,nucleos,tamanio,capacidad,certificada,precio) VALUES(?,?,?,?,?,?,?,?,?,?,?);");
@@ -198,7 +201,7 @@ Connection connection;
 		
 		Connection connection;
 		
-		connection=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Ejemplo","postgres","admin");
+		connection=DriverManager.getConnection(env.getProperty("spring.datasource.url"),env.getProperty("spring.datasource.username"),env.getProperty("spring.datasource.password"));
 		
 		PreparedStatement consulta = 
 				connection.prepareStatement("DELETE FROM componentes WHERE id=?;");
@@ -219,7 +222,7 @@ Connection connection;
 		
 Connection connection;
 		
-		connection=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Ejemplo","postgres","admin");
+		connection=DriverManager.getConnection(env.getProperty("spring.datasource.url"),env.getProperty("spring.datasource.username"),env.getProperty("spring.datasource.password"));
 		
 		PreparedStatement consulta = 
 				connection.prepareStatement("SELECT * FROM componentes WHERE modelo LIKE ?;");
@@ -259,18 +262,18 @@ Connection connection;
 	}
 	
 	
-	@GetMapping("/busquedaT")
-	public String busquedaT(Model template, @RequestParam String palabraBuscada) throws SQLException
+	@GetMapping("/busquedaT/{tipoComponente}")
+	public String busquedaT(Model template, @PathVariable String tipoComponente) throws SQLException
 	{
 		
 Connection connection;
 		
-		connection=DriverManager.getConnection("jdbc:postgresql://localhost:5432/Ejemplo","postgres","admin");
+		connection=DriverManager.getConnection(env.getProperty("spring.datasource.url"),env.getProperty("spring.datasource.username"),env.getProperty("spring.datasource.password"));
 		
 		PreparedStatement consulta = 
 				connection.prepareStatement("SELECT * FROM componentes WHERE tipo LIKE ?;");
 		
-		consulta.setString(1,"%" +palabraBuscada+ "%");
+		consulta.setString(1,"%" +tipoComponente+ "%");
 		
 		
 		

@@ -8,28 +8,28 @@
 
 	<body>
 		<div class="tarjeta-componente">
-			<div th:if="${velocidad!=null}"> <!-- si null, no muestra -->
+			<div th:if="${velocidad!=''}"> <!-- si null, no muestra -->
 				<label>Velocidad: </label><label th:text="${velocidad}"></label><br></br>
 			</div>
 			 <label>Tipo: </label><label th:text="${tipo}"></label><br></br>
-			<div th:if="${tamanio!=null}">
+			<div th:if="${tamanio!=''}">
 			 <label >Tamanio: </label><label th:text="${tamanio}"></label><br></br>
 			</div>
-			<div th:if="${socket!=null}">
+			<div th:if="${socket!=''}">
 			 <label>Socket: </label><label th:text="${socket}"></label><br></br>
 			</div>
-			<div th:if="${nucleos!=null}">
+			<div th:if="${nucleos!='0'}">
 			 <label>Nucleos: </label><label th:text="${nucleos}"></label><br></br>
 			</div>
 			<label>Modelo: </label><label th:text="${modelo}"></label><br></br>
 			<label>Marca: </label><label th:text="${marca}"></label><br></br>
-			<div th:if="${familia!=null}">
+			<div th:if="${familia!=''}">
 			 <label>Familia: </label><label th:text="${familia}"></label><br></br>
 			</div>
-			<div th:if="${capacidad!=null}">
+			<div th:if="${capacidad!=''}">
 			 <label>Capacidad: </label><label th:text="${capacidad}"></label><br></br>
 			</div>
-			<div th:if="${certificada!=null}">
+			<div th:if="${certificada!=''}">
 			 <label>Certificada: </label><label th:text="${certificada}"></label><br></br>
 			</div>
 			<label>Precio: </label><label th:text="${precio}"></label><br></br>
