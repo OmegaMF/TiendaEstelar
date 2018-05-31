@@ -107,13 +107,6 @@ p.subrayado, span.verde{
 	background-color:#3ed633;
 }
 
-.tarjeta-componente{
-	border-style:solid;
-	border-radius:5px;
-	background-color:white;
-	padding:10px;
-}
-
 .inside{
 	padding:10px;
 }

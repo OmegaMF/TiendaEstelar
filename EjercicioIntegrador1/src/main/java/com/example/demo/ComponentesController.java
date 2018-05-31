@@ -343,16 +343,11 @@ Connection connection;
 		return "contact";
 	}
 	
-	@GetMapping("/home")
-	public String home()
-	{
-		return "home";
-	}
 	
 	@GetMapping("/")
 	public String Pagina()
 	{
-		return "paginaPrincipal";
+		return "vPrevias";
 	}
 	
 	//dividir el precio en 100

@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html layout:decorator="paginaPrincipal">
 	<head>
 		<title>Listado Componentes</title>
 		<link rel="stylesheet" type="text/css" href="/css/estilos.css"></link>
@@ -11,11 +11,7 @@
 	</head>
 
 	<body>
-		<form action="/busquedaC">
-			<input type="text" name="palabraBuscada"></input>
-			<input type="submit" value="Buscar"></input>
-			<input type="checkbox" value="Marcar Todos" id="cb"></input>
-		</form>
+	  <div layout:fragment="fragm">
 		<div class="tarjeta-componente" th:each="componente:${listadoComponentes}">
 			<!-- <div th:class="'inside ' + ${componente.marca== 'nvidia' ? 'nvidia' : (componente.marca=='intel'? 'intel': 'AMD')}">-->
 				<a th:href="'detalleC/' + ${componente.id}"  th:text="${componente.modelo}"></a><br></br>
@@ -24,7 +20,7 @@
 				<label>Precio</label><label th:text="${componente.precio}"></label><br></br>
 			<a th:href=" 'eliminar/' + ${componente.id}">X</a>
 			</div>
-		<!-- </div>	-->
+		</div>
 	</body>
 
 </html>
