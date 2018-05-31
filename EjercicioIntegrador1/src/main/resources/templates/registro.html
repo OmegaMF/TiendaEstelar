@@ -1,13 +1,15 @@
 <!doctype html>
-<html>
+<html layout:decorator="paginaPrincipal">
 	<head>
 		<title>Registro</title>
-		<link rel="stylesheet" type="text/css" href="/css/estilos.css"></link>
+		<link rel="stylesheet" type="text/css" href="/css/tienda.css"></link>
+
 		<meta charset="UTF-8"></meta>
 	</head>
 
 	<body>
-		<h1>Registro muy importante</h1>
+	  <div  layout:fragment="fragm">
+		<h1>Agregar Componente</h1>
 		<form action="/insertar-componente">
 		
 			<input name="tipo" type="text" placeholder="tipo"></input>
@@ -25,7 +27,7 @@
 			
 		
 		</form>
-		
+	  </div>
 	</body>
 
 </html>

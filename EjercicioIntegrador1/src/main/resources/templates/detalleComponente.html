@@ -2,13 +2,14 @@
 <html layout:decorator="paginaPrincipal">
 	<head>
 		<title>Detalle Componente</title>
-		<link rel="stylesheet" type="text/css" href="/css/estilos.css"></link>
+		<link rel="stylesheet" type="text/css" href="/css/tienda.css"></link>
+
 		<meta charset="UTF-8"></meta>
 	</head>
 
 	<body>
 	  <div  layout:fragment="fragm">
-		<div class="tarjeta-componente">
+		<div class="tarjeta-comp">
 			<div th:if="${velocidad!=''}"> <!-- si null, no muestra -->
 				<label>Velocidad: </label><label th:text="${velocidad}"></label><br></br>
 			</div>
