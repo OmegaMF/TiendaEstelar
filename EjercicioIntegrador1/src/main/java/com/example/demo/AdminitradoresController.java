@@ -1,9 +1,13 @@
 package com.example.demo;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import org.simplejavamail.email.Email;
+import org.simplejavamail.email.EmailBuilder;
+import org.simplejavamail.mailer.MailerBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
@@ -23,13 +27,12 @@ public class AdminitradoresController
 	
 	
 	@GetMapping("/agregarAdministrador")
-	@ResponseBody
 	public String agregarAdministrador(Model template) throws SQLException
 	{
 		return "registroAdministrador";
 	}
 	
-	@GetMapping("/insertar-administrador")
+	@GetMapping("/insertarAdministrador")
 	public String insertarComponente(@RequestParam String nombre, @RequestParam String contrasenia) throws SQLException
 	{
 		
@@ -47,13 +50,47 @@ public class AdminitradoresController
 		consulta.setString(2, contrasenia);
 
 		
-		//precio=precio/100;
+		consulta.executeUpdate();
+		
+		Email email = EmailBuilder.startingBlank()
+			    .from("Manu", "tuaweloide@hotmail.com")
+			    .to("manu", "manu.f12345@gmail.com")
+			    .withSubject("My Bakery is finally open!")
+			    .withPlainText("Boiiii, bakery's open boiiiii")
+			    .buildEmail();
+
+			MailerBuilder
+			  .withSMTPServer("smtp.sendgrid.net", 587, "apikey", "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")
+			  .buildMailer()
+			  .sendMail(email);
+		
+		
+		
+		connection.close();
+		return "redirect:/";
+	}
+	
+	@GetMapping("/eliminarAdministrador/{id}")
+	public String eliminarAdministrador(@PathVariable int id) throws SQLException
+	{
+		
+		Connection connection;
+		
+		connection=DriverManager.getConnection(env.getProperty("spring.datasource.url"),env.getProperty("spring.datasource.username"),env.getProperty("spring.datasource.password"));
+		
+		PreparedStatement consulta = 
+				connection.prepareStatement("DELETE FROM administradores WHERE id=?;");
+											
+		
+		consulta.setInt(1, id);
 		
 		consulta.executeUpdate();
 		
 		connection.close();
-		return "redirect:/vPrevia";
+		return "redirect:/";
 	}
+	
+	
 	
 	
 }
