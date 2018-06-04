@@ -63,7 +63,8 @@ public class ExampleController
 	}
 	
 	@GetMapping("/comprobarFormulario")
-	public String comprobarFormulario(Model template, @RequestParam String nombre, @RequestParam String dni, @RequestParam String email, @RequestParam String comentario)
+	public String comprobarFormulario(Model template, @RequestParam String nombre, @RequestParam String dni, @RequestParam String email,
+			@RequestParam String comentario)
 	{
 		template.addAttribute("nombrePreCargado", nombre);
 		template.addAttribute("dniPreCargado", dni);

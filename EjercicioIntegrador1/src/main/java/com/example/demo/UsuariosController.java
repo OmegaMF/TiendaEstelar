@@ -20,12 +20,6 @@ import com.example.model.Usuario;
 public class UsuariosController
 {
 	
-	@GetMapping("/registro")
-	public String registro()
-	{
-		return "registro";
-	}
-	
 	@GetMapping("/editar/{id}")
 	public String editar(Model template, @PathVariable int id) throws SQLException
 	{

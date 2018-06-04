@@ -12,9 +12,11 @@ public class Componente {
 	private String capacidad;
 	private boolean certificada;
 	private int precio;
+	private String urlimg;
 	private int id;
 	
-	public Componente(int i,String t,String m,String mo, String v, String f, String s, String n, String ta, String c, boolean cer,int p )
+	public Componente(int i,String t,String m,String mo, String v, String f, String s, String n, String ta, String c, boolean cer,
+			String u, int p )
 	{
 		this.tipo=t;
 		this.marca=m;
@@ -28,6 +30,7 @@ public class Componente {
 		this.certificada=cer;
 		this.id=i;
 		this.precio=p;
+		this.urlimg=u;
 		
 	}
 	
@@ -35,7 +38,7 @@ public class Componente {
 	public String toString() {
 		return "Componente [tipo=" + tipo + ", marca=" + marca + ", modelo=" + modelo + ", velocidad=" + velocidad +", familia="+
 	familia+", socket="+ socket+", nucleos="+nucleos+", tamanio="+tamanio+", capacidad="+capacidad+", certificada="+certificada+
-	", id=" + id + ", precio="+ precio + " ]";
+	", id=" + id + ", precio="+ precio + ", url="+ urlimg +" ]";
 	}
 
 	public String getTipo() {
@@ -133,8 +136,16 @@ public class Componente {
 	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
-	
 
+	public String getUrlimg() {
+		return urlimg;
+	}
+
+	public void setUrlimg(String urlimg) {
+		this.urlimg = urlimg;
+	}
+	
+	
 }
 	
 	

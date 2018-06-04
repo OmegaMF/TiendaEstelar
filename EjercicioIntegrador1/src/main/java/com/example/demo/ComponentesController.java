@@ -79,6 +79,7 @@ Connection connection;
 			String capacidad=resultado.getString("capacidad");
 			Boolean certificada = resultado.getBoolean("certificada"); if (resultado.wasNull()) certificada = null;
 			int precio=resultado.getInt("precio");
+			String urlimg=resultado.getString("urlimg");
 			
 	
 			
@@ -94,6 +95,7 @@ Connection connection;
 			template.addAttribute("capacidad",capacidad);
 			template.addAttribute("certificada",certificada);
 			template.addAttribute("precio",precio);
+			template.addAttribute("urlimg",urlimg);
 			
 		}
 		
@@ -135,9 +137,11 @@ Connection connection;
 			String tamanio=resultado.getString("tamanio");
 			String capacidad=resultado.getString("capacidad");
 			boolean certificada=resultado.getBoolean("certificada");
+			String urlimg=resultado.getString("urlimg");
 			int precio=resultado.getInt("precio");
 			
-			Componente x=new Componente(id, tipo, marca, modelo, velocidad, familia, socket, nucleos, tamanio, capacidad, certificada, precio);
+			
+			Componente x=new Componente(id, tipo, marca, modelo, velocidad, familia, socket, nucleos, tamanio, capacidad, certificada, urlimg ,precio );
 			listadoComponentes.add(x);
 		}
 		
@@ -160,7 +164,7 @@ Connection connection;
 	@GetMapping("/insertar-componente")
 	public String insertarComponente(@RequestParam String tipo, @RequestParam String marca,@RequestParam String modelo,@RequestParam(required=false) String velocidad
 			,@RequestParam(required=false) String familia,@RequestParam(required=false) String socket,@RequestParam(required=false) int nucleos,@RequestParam(required=false) String tamanio,@RequestParam(required=false) String capacidad
-			,@RequestParam(required=false) boolean certificada, int precio) throws SQLException
+			,@RequestParam(required=false) boolean certificada, int precio, String urlimg) throws SQLException
 	{
 		
 		
@@ -171,7 +175,7 @@ Connection connection;
 		connection=DriverManager.getConnection(env.getProperty("spring.datasource.url"),env.getProperty("spring.datasource.username"),env.getProperty("spring.datasource.password"));
 		
 		PreparedStatement consulta = 
-				connection.prepareStatement("INSERT INTO componentes(tipo,marca,modelo,velocidad,familia,socket,nucleos,tamanio,capacidad,certificada,precio) VALUES(?,?,?,?,?,?,?,?,?,?,?);");
+				connection.prepareStatement("INSERT INTO componentes(tipo,marca,modelo,velocidad,familia,socket,nucleos,tamanio,capacidad,certificada,precio,urlimg) VALUES(?,?,?,?,?,?,?,?,?,?,?,?);");
 											//DELETE FROM componentes WHERE id>17
 		consulta.setString(1, tipo);
 		consulta.setString(2, marca);
@@ -184,6 +188,7 @@ Connection connection;
 		consulta.setString(9, capacidad);
 		consulta.setBoolean(10, certificada);
 		consulta.setInt(11, precio);
+		consulta.setString(12, urlimg);
 		
 		//precio=precio/100;
 		
@@ -249,9 +254,11 @@ Connection connection;
 			String tamanio=resultado.getString("tamanio");
 			String capacidad=resultado.getString("capacidad");
 			boolean certificada=resultado.getBoolean("certificada");
+			String urlimg=resultado.getString("urlimg");
 			int precio=resultado.getInt("precio");
 			
-			Componente x=new Componente(id, tipo, marca, modelo, velocidad, familia, socket, nucleos, tamanio, capacidad, certificada, precio);
+			
+			Componente x=new Componente(id, tipo, marca, modelo, velocidad, familia, socket, nucleos, tamanio, capacidad, certificada, urlimg ,precio );
 			listadoComponentes.add(x);
 		}
 		
@@ -295,9 +302,59 @@ Connection connection;
 			String tamanio=resultado.getString("tamanio");
 			String capacidad=resultado.getString("capacidad");
 			boolean certificada=resultado.getBoolean("certificada");
+			String urlimg=resultado.getString("urlimg");
 			int precio=resultado.getInt("precio");
 			
-			Componente x=new Componente(id, tipo, marca, modelo, velocidad, familia, socket, nucleos, tamanio, capacidad, certificada, precio);
+			
+			Componente x=new Componente(id, tipo, marca, modelo, velocidad, familia, socket, nucleos, tamanio, capacidad, certificada, urlimg ,precio );
+			listadoComponentes.add(x);
+		}
+		
+		
+		template.addAttribute("listadoComponentes", listadoComponentes);
+		
+		return "listadoComponentes";
+	}
+	
+	
+	@GetMapping("/busquedaM/{marcaComponente}")
+	public String busquedaM(Model template, @PathVariable String marcaComponente) throws SQLException
+	{
+		
+Connection connection;
+		
+		connection=DriverManager.getConnection(env.getProperty("spring.datasource.url"),env.getProperty("spring.datasource.username"),env.getProperty("spring.datasource.password"));
+		
+		PreparedStatement consulta = 
+				connection.prepareStatement("SELECT * FROM componentes WHERE marca LIKE ?;");
+		
+		consulta.setString(1,"%" +marcaComponente+ "%");
+		
+		
+		
+		ResultSet resultado= consulta.executeQuery();
+		
+		
+		ArrayList<Componente> listadoComponentes=new ArrayList<Componente>();
+		
+		while(resultado.next())
+		{
+			int id=resultado.getInt("id");
+			String tipo=resultado.getString("tipo");
+			String marca=resultado.getString("marca");
+			String modelo=resultado.getString("modelo");
+			String velocidad=resultado.getString("velocidad");
+			String familia=resultado.getString("familia");
+			String socket=resultado.getString("socket");
+			String nucleos=resultado.getString("nucleos");
+			String tamanio=resultado.getString("tamanio");
+			String capacidad=resultado.getString("capacidad");
+			boolean certificada=resultado.getBoolean("certificada");
+			String urlimg=resultado.getString("urlimg");
+			int precio=resultado.getInt("precio");
+			
+			
+			Componente x=new Componente(id, tipo, marca, modelo, velocidad, familia, socket, nucleos, tamanio, capacidad, certificada, urlimg ,precio );
 			listadoComponentes.add(x);
 		}
 		
@@ -309,27 +366,23 @@ Connection connection;
 	
 	
 	
-	@ResponseBody
-	@GetMapping("/pepito")
-	public String Pepito(Model template)throws SQLException
-	{
-		return "hola";
-	}
+	
+
 	
 	
 
 	
-	@GetMapping("/ventas")
+	@GetMapping("/services")
 	public String ventas()
 	{
-		return "home";
+		return "servicios";
 	}
 
 	
-	@GetMapping("/contact")
+	@GetMapping("/contacto")
 	public String contact()
 	{
-		return "contact";
+		return "contacto";
 	}
 	
 	
