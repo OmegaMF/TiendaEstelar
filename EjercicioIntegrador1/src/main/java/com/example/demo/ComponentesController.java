@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
@@ -17,18 +19,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.model.Componente;
+import com.example.model.Usuario;
+
 
 @Controller
 public class ComponentesController
 {
 	
+	
+	
+	
+	
+	
+	
 	@Autowired
 	private Environment env;
-	
+	@Autowired private AdministradoresHelper AdministradoresHelper;
 	
 	
 	@GetMapping("/editarC/{id}")
-	public String editarC(Model template, @PathVariable int id) throws SQLException
+	public String editarC(HttpSession session, Model template, @PathVariable int id) throws SQLException
 	{
 Connection connection;
 		
@@ -39,8 +49,16 @@ Connection connection;
 		
 		consulta.setInt(1, id);
 		
-		
 		template.addAttribute("idComponente", id);
+		Usuario logueado=AdministradoresHelper.usuarioLogueado(session);
+		if (logueado == null) {
+	        template.addAttribute("estaLogeado", false);
+	    } else {
+	        template.addAttribute("estaLogeado", true);
+	    }
+		
+		
+		
 		return "editarC";
 	}
 	
@@ -48,10 +66,8 @@ Connection connection;
 	
 	
 	@GetMapping("/detalleC/{id}")
-	public String detalleC(Model template, @PathVariable int id) throws SQLException
+	public String detalleC(HttpSession session, Model template, @PathVariable int id) throws SQLException
 	{
-		
-		System.out.print("gfdrdsre");
 		
 Connection connection;
 		
@@ -100,13 +116,21 @@ Connection connection;
 		}
 		
 		
+		Usuario logueado=AdministradoresHelper.usuarioLogueado(session);
+		if (logueado == null) {
+	        template.addAttribute("estaLogeado", false);
+	    } else {
+	        template.addAttribute("estaLogeado", true);
+	    }
+		
+		
 		return "detalleComponente";
 	}
 	
 	
 	
 	@GetMapping("/listadoComponentes")
-	public String listadoComponentes(Model template) throws SQLException
+	public String listadoComponentes(HttpSession session, Model template) throws SQLException
 	{
 		
 Connection connection;
@@ -141,20 +165,38 @@ Connection connection;
 			int precio=resultado.getInt("precio");
 			
 			
-			Componente x=new Componente(id, tipo, marca, modelo, velocidad, familia, socket, nucleos, tamanio, capacidad, certificada, urlimg ,precio );
+			Componente x=new Componente(id, tipo, marca, modelo, velocidad, familia, socket, nucleos, tamanio, capacidad, certificada, precio ,urlimg );
 			listadoComponentes.add(x);
 		}
 		
 		
 		template.addAttribute("listadoComponentes", listadoComponentes);
 
+		Usuario logueado=AdministradoresHelper.usuarioLogueado(session);
+		if (logueado == null) {
+	        template.addAttribute("estaLogeado", false);
+	    } else {
+	        template.addAttribute("estaLogeado", true);
+	    }
+		
+		
 		
 		return "listadoComponentes";
 	}
 	
 	
 	@GetMapping("/agregar-componente")
-	public String agregarComponente(){
+	public String agregarComponente(HttpSession session, Model template) throws SQLException
+	{
+		
+		Usuario logueado=AdministradoresHelper.usuarioLogueado(session);
+		if (logueado == null) {
+	        template.addAttribute("estaLogeado", false);
+	    } else {
+	        template.addAttribute("estaLogeado", true);
+	    }
+		
+		
 	return "registro";	
 	}
 	
@@ -162,7 +204,7 @@ Connection connection;
 	
 	
 	@GetMapping("/insertar-componente")
-	public String insertarComponente(@RequestParam String tipo, @RequestParam String marca,@RequestParam String modelo,@RequestParam(required=false) String velocidad
+	public String insertarComponente(HttpSession session, Model template, @RequestParam String tipo, @RequestParam String marca,@RequestParam String modelo,@RequestParam(required=false) String velocidad
 			,@RequestParam(required=false) String familia,@RequestParam(required=false) String socket,@RequestParam(required=false) int nucleos,@RequestParam(required=false) String tamanio,@RequestParam(required=false) String capacidad
 			,@RequestParam(required=false) boolean certificada, int precio, String urlimg) throws SQLException
 	{
@@ -195,13 +237,23 @@ Connection connection;
 		consulta.executeUpdate();
 		
 		connection.close();
+		
+		Usuario logueado=AdministradoresHelper.usuarioLogueado(session);
+		if (logueado == null) {
+	        template.addAttribute("estaLogeado", false);
+	    } else {
+	        template.addAttribute("estaLogeado", true);
+	    }
+		
+		
+		
 		return "redirect:/listadoComponentes";
 	}
 	
 	
 	@GetMapping("/eliminar-componente/{id}")
 	@ResponseBody
-	public String eliminarComponente(@PathVariable int id) throws SQLException
+	public String eliminarComponente(HttpSession session, Model template, @PathVariable int id) throws SQLException
 	{
 		
 		Connection connection;
@@ -217,12 +269,23 @@ Connection connection;
 		consulta.executeUpdate();
 		
 		connection.close();
+		
+		
+		Usuario logueado=AdministradoresHelper.usuarioLogueado(session);
+		if (logueado == null) {
+	        template.addAttribute("estaLogeado", false);
+	    } else {
+	        template.addAttribute("estaLogeado", true);
+	    }		
+		
+		
+		
 		return "Que así sea";
 	}
 	
 	
 	@GetMapping("/busquedaC")
-	public String busquedaC(Model template, @RequestParam String palabraBuscada) throws SQLException
+	public String busquedaC(Model template,HttpSession session, @RequestParam String palabraBuscada) throws SQLException
 	{
 		
 Connection connection;
@@ -258,19 +321,28 @@ Connection connection;
 			int precio=resultado.getInt("precio");
 			
 			
-			Componente x=new Componente(id, tipo, marca, modelo, velocidad, familia, socket, nucleos, tamanio, capacidad, certificada, urlimg ,precio );
+			Componente x=new Componente(id, tipo, marca, modelo, velocidad, familia, socket, nucleos, tamanio, capacidad, certificada, precio ,urlimg );
 			listadoComponentes.add(x);
 		}
-		
+		  
 		
 		template.addAttribute("listadoComponentes", listadoComponentes);
+		
+		
+		
+		Usuario logueado=AdministradoresHelper.usuarioLogueado(session);
+		if (logueado == null) {
+	        template.addAttribute("estaLogeado", false);
+	    } else {
+	        template.addAttribute("estaLogeado", true);
+	    }
 		
 		return "listadoComponentes";
 	}
 	
 	
 	@GetMapping("/busquedaT/{tipoComponente}")
-	public String busquedaT(Model template, @PathVariable String tipoComponente) throws SQLException
+	public String busquedaT(HttpSession session, Model template, @PathVariable String tipoComponente) throws SQLException
 	{
 		
 Connection connection;
@@ -306,19 +378,27 @@ Connection connection;
 			int precio=resultado.getInt("precio");
 			
 			
-			Componente x=new Componente(id, tipo, marca, modelo, velocidad, familia, socket, nucleos, tamanio, capacidad, certificada, urlimg ,precio );
+			Componente x=new Componente(id, tipo, marca, modelo, velocidad, familia, socket, nucleos, tamanio, capacidad, certificada, precio ,urlimg );
 			listadoComponentes.add(x);
 		}
 		
 		
 		template.addAttribute("listadoComponentes", listadoComponentes);
 		
+		Usuario logueado=AdministradoresHelper.usuarioLogueado(session);
+		if (logueado == null) {
+	        template.addAttribute("estaLogeado", false);
+	    } else {
+	        template.addAttribute("estaLogeado", true);
+	    }
+		
+		
 		return "listadoComponentes";
 	}
 	
 	
 	@GetMapping("/busquedaM/{marcaComponente}")
-	public String busquedaM(Model template, @PathVariable String marcaComponente) throws SQLException
+	public String busquedaM(HttpSession session, Model template, @PathVariable String marcaComponente) throws SQLException
 	{
 		
 Connection connection;
@@ -354,12 +434,20 @@ Connection connection;
 			int precio=resultado.getInt("precio");
 			
 			
-			Componente x=new Componente(id, tipo, marca, modelo, velocidad, familia, socket, nucleos, tamanio, capacidad, certificada, urlimg ,precio );
+			Componente x=new Componente(id, tipo, marca, modelo, velocidad, familia, socket, nucleos, tamanio, capacidad, certificada, precio ,urlimg );
 			listadoComponentes.add(x);
 		}
 		
 		
 		template.addAttribute("listadoComponentes", listadoComponentes);
+		
+		
+		Usuario logueado=AdministradoresHelper.usuarioLogueado(session);
+		if (logueado == null) {
+	        template.addAttribute("estaLogeado", false);
+	    } else {
+	        template.addAttribute("estaLogeado", true);
+	    }
 		
 		return "listadoComponentes";
 	}
@@ -373,22 +461,47 @@ Connection connection;
 
 	
 	@GetMapping("/services")
-	public String ventas()
+	public String ventas(HttpSession session, Model template) throws SQLException
 	{
+		
+		Usuario logueado=AdministradoresHelper.usuarioLogueado(session);
+		if (logueado == null) {
+	        template.addAttribute("estaLogeado", false);
+	    } else {
+	        template.addAttribute("estaLogeado", true);
+	    }
+		
+		
 		return "servicios";
 	}
 
 	
 	@GetMapping("/contacto")
-	public String contact()
+	public String contact(HttpSession session, Model template) throws SQLException
 	{
+		Usuario logueado=AdministradoresHelper.usuarioLogueado(session);
+		if (logueado == null) {
+	        template.addAttribute("estaLogeado", false);
+	    } else {
+	        template.addAttribute("estaLogeado", true);
+	    }
+		
+		
 		return "contacto";
 	}
 	
 	
 	@GetMapping("/")
-	public String Pagina()
+	public String Pagina(HttpSession session, Model template) throws SQLException
 	{
+		Usuario logueado=AdministradoresHelper.usuarioLogueado(session);
+		if (logueado == null) {
+	        template.addAttribute("estaLogeado", false);
+	    } else {
+	        template.addAttribute("estaLogeado", true);
+	    }
+		
+		
 		return "vPrevias";
 	}
 	

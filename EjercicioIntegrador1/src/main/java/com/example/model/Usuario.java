@@ -3,21 +3,19 @@ package com.example.model;
 public class Usuario {
 	private String nombre;
 	private String contrasenia;
-	private boolean activo;
 	private int id;
 	
-	public Usuario(int i,String n,String c,boolean a )
+	public Usuario(int i,String n,String c)
 	{
 		this.nombre=n;
 		this.contrasenia=c;
-		this.activo=a;
 		this.id=i;
 		
 	}
 	
 	@Override
 	public String toString() {
-		return "Usuario [nombre=" + nombre + ", contrasenia=" + contrasenia + ", activo=" + activo + ", id=" + id + "]";
+		return "Usuario [nombre=" + nombre + ", contrasenia=" + contrasenia + ", id=" + id + "]";
 	}
 
 	
@@ -39,14 +37,7 @@ public class Usuario {
 		this.contrasenia = contrasenia;
 	}
 
-	public boolean isActivo() {
-		return activo;
-	}
-
-	public void setActivo(boolean activo) {
-		this.activo = activo;
-	}
-
+	
 	public int getId() {
 		return id;
 	}

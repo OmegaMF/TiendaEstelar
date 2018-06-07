@@ -101,7 +101,7 @@ Connection connection;
 			String password=resultado.getString("contrasenia");
 			boolean activo=resultado.getBoolean("activo");
 			
-			Usuario x=new Usuario(id, name, password, activo);
+			Usuario x=new Usuario(id, name, password);
 			listadoUsuarios.add(x);
 		}
 		
@@ -192,7 +192,7 @@ Connection connection;
 			String password=resultado.getString("contrasenia");
 			boolean activo=resultado.getBoolean("activo");
 			
-			Usuario x=new Usuario(id, name, password, activo);
+			Usuario x=new Usuario(id, name, password);
 			listadoUsuarios.add(x);
 		}
 		

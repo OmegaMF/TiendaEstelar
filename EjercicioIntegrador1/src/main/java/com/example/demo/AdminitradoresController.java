@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpSession;
+
 import org.simplejavamail.email.Email;
 import org.simplejavamail.email.EmailBuilder;
 import org.simplejavamail.mailer.MailerBuilder;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -23,7 +26,33 @@ public class AdminitradoresController
 	
 	@Autowired
 	private Environment env;
+
+	@Autowired
+	private AdministradoresHelper AdministradoresHelper;
 	
+	
+	@GetMapping("/login")
+	public String login() {
+		return "log-in";
+	}
+	
+	@GetMapping("/procesarLogin")
+	public String procesarLogin(HttpSession session, @RequestParam String nombre, @RequestParam String contrasenia) throws SQLException {
+		boolean sePudo = AdministradoresHelper.intentarLoguearse(session, nombre, contrasenia);
+		
+		if (sePudo) {
+			return "redirect:/";
+		} else {
+			// TODO: pregarcar los datos que lleno, salvo la contrasenia
+			return "log-in";
+		}
+	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) throws SQLException {
+		AdministradoresHelper.cerrarSesion(session);
+		return "redirect:/";
+	}
 	
 	
 	@GetMapping("/agregarAdministrador")

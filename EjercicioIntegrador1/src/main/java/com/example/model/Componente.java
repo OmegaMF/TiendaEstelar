@@ -1,6 +1,7 @@
 package com.example.model;
 
 public class Componente {
+	private int id;
 	private String tipo;
 	private String marca;
 	private String modelo;
@@ -13,10 +14,8 @@ public class Componente {
 	private boolean certificada;
 	private int precio;
 	private String urlimg;
-	private int id;
 	
-	public Componente(int i,String t,String m,String mo, String v, String f, String s, String n, String ta, String c, boolean cer,
-			String u, int p )
+	public Componente(int i,String t,String m,String mo, String v, String f, String s, String n, String ta, String c, boolean cer, int p, String u )
 	{
 		this.tipo=t;
 		this.marca=m;
