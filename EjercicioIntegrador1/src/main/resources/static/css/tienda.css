@@ -37,3 +37,15 @@
 #footer{
 	background-color:#9a9e9e;
 }
+
+.button {
+    background-color: white; /* Green */
+    color: #7fb0ff;
+    padding: 1px 7px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 50%;
+    border: 1px solid #4CAF50;
+}

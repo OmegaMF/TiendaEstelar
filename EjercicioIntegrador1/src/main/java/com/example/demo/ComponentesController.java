@@ -57,7 +57,8 @@ Connection connection;
 	        template.addAttribute("estaLogeado", true);
 	    }
 		
-		
+
+		connection.close();
 		
 		return "editarC";
 	}
@@ -123,6 +124,8 @@ Connection connection;
 	        template.addAttribute("estaLogeado", true);
 	    }
 		
+
+		connection.close();
 		
 		return "detalleComponente";
 	}
@@ -180,6 +183,8 @@ Connection connection;
 	    }
 		
 		
+
+		connection.close();
 		
 		return "listadoComponentes";
 	}
@@ -218,7 +223,7 @@ Connection connection;
 		
 		PreparedStatement consulta = 
 				connection.prepareStatement("INSERT INTO componentes(tipo,marca,modelo,velocidad,familia,socket,nucleos,tamanio,capacidad,certificada,precio,urlimg) VALUES(?,?,?,?,?,?,?,?,?,?,?,?);");
-											//DELETE FROM componentes WHERE id>17
+											
 		consulta.setString(1, tipo);
 		consulta.setString(2, marca);
 		consulta.setString(3, modelo);
@@ -232,7 +237,6 @@ Connection connection;
 		consulta.setInt(11, precio);
 		consulta.setString(12, urlimg);
 		
-		//precio=precio/100;
 		
 		consulta.executeUpdate();
 		
@@ -337,6 +341,9 @@ Connection connection;
 	        template.addAttribute("estaLogeado", true);
 	    }
 		
+
+		connection.close();
+		
 		return "listadoComponentes";
 	}
 	
@@ -392,6 +399,8 @@ Connection connection;
 	        template.addAttribute("estaLogeado", true);
 	    }
 		
+
+		connection.close();
 		
 		return "listadoComponentes";
 	}
@@ -448,6 +457,8 @@ Connection connection;
 	    } else {
 	        template.addAttribute("estaLogeado", true);
 	    }
+
+		connection.close();
 		
 		return "listadoComponentes";
 	}

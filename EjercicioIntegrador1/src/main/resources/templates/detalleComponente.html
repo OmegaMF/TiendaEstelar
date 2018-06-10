@@ -10,6 +10,8 @@
 	<body>
 	  <div  layout:fragment="fragm">
 		<div class="tarjeta-comp">
+			
+			<img th:src="${urlimg}"></img>
 			<div th:if="${velocidad!=''}"> <!-- si null, no muestra -->
 				<label>Velocidad: </label><label th:text="${velocidad}"></label><br></br>
 			</div>
