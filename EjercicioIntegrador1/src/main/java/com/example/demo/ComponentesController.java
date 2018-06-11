@@ -211,7 +211,7 @@ Connection connection;
 	@GetMapping("/insertar-componente")
 	public String insertarComponente(HttpSession session, Model template, @RequestParam String tipo, @RequestParam String marca,@RequestParam String modelo,@RequestParam(required=false) String velocidad
 			,@RequestParam(required=false) String familia,@RequestParam(required=false) String socket,@RequestParam(required=false) int nucleos,@RequestParam(required=false) String tamanio,@RequestParam(required=false) String capacidad
-			,@RequestParam(required=false) boolean certificada, int precio, String urlimg) throws SQLException
+			,@RequestParam(required=false) boolean certificada, @RequestParam int precio,@RequestParam String urlimg) throws SQLException
 	{
 		
 		

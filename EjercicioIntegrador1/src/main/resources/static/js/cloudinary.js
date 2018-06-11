@@ -6,7 +6,7 @@ $(document).ready(function() {
 		upload_preset : 'ybolhkcs', 
 		cloud_name: 'dt0hqsxvd',
 		theme: 'white',
-		multiple: true,
+		multiple: false,
 		max_image_width: 750,
 		max_image_height: 500,
 		max_files: 5,

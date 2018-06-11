@@ -15,7 +15,7 @@
 	  <div layout:fragment="fragm">
 		<div class="tarjeta-componente" th:each="componente:${listadoComponentes}">
 				<a th:href="'detalleC/' + ${componente.id}"  th:text="${componente.modelo}"></a><br></br>
-				<img th:src="${urlimg}"></img>
+				<img class="imglst" th:src="${componente.urlimg}"></img>
 				<label>Tipo: </label><label th:text="${componente.tipo}"></label><br></br>
 				<label>Marca: </label><label th:text="${componente.marca}"></label><br></br>
 				<label>Precio: </label><label th:text="${componente.precio}"></label><br></br>
