@@ -11,6 +11,7 @@
 #categorias{
 	border-style:solid;
 	border-radius:5px;
+	background-color:#d6d6d6;
 }
 
 #cuerpo{
@@ -49,3 +50,4 @@
     border-radius: 50%;
     border: 1px solid #4CAF50;
 }
+
