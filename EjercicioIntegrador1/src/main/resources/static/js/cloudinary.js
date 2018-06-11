@@ -10,10 +10,15 @@ $(document).ready(function() {
 		max_image_width: 750,
 		max_image_height: 500,
 		max_files: 5,
-		folder: 'mi_carpeta',
+		folder: 'imgs',
 		sources: [ 'local', 'url', 'facebook'], 
 	}, function(error, result) {
 		console.log(error, result)
+		var url = result[0].secure_url;
+		        
+		console.log (url);
+		        
+		$("form").find(".img").val( url );
 	})
 })
 
