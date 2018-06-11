@@ -11,8 +11,17 @@
 	  <div  layout:fragment="fragm">
 		<h1>Agregar Componente</h1>
 		<form action="/insertar-componente">
-		
-			<input name="tipo" type="text" placeholder="tipo"></input>
+			
+			<select>
+			  <option>Seleccione el tipo</option>
+			  <option value="placa de video">Placa de Video</option>
+			  <option value="procesador">Procesador</option>
+			  <option value="gabinete">Gabinete</option>
+			  <option value="RAM">Memoria RAM</option>
+			  <option value="cooler">Cooler</option>
+			  <option value="motherboard">Motherboard</option>
+			  <option value="fuente">Fuente</option>
+			</select>
 			<input name="marca" type="text" placeholder="marca"></input>
 			<input name="modelo" type="text" placeholder="modelo"></input>
 			<input name="velocidad" type="text" placeholder="velocidad"></input>
