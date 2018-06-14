@@ -5,6 +5,7 @@
 
 #header{
 	background-color:#9a9e9e;
+	border-radius:5px;
 	border-style:solid;
 }
 
@@ -12,10 +13,14 @@
 	border-style:solid;
 	border-radius:5px;
 	background-color:#d6d6d6;
+	
+	border-width: 2px;
 }
 
 #cuerpo{
+	border-radius:5px;
 	border-style:solid;
+	border-width: 2px;
 }
 
 
@@ -33,11 +38,22 @@
 	border-radius: 5px;
 	background-color:white;
 	padding:10px;
+	margin-top:7px;
+	margin-bottom:7px;
+}
+
+nav{
+	border-style:solid;
+	border-radius:5px;
+	border-width:2px;
+	margin-top:4px;
 }
 
 #footer{
 	background-color:#9a9e9e;
+	border-radius:5px;
 	border-style:solid;
+	margin-top:10px;
 }
 
 .button {
@@ -47,7 +63,7 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 13px;
     border-radius: 50%;
     border: 1px solid #4CAF50;
 }
@@ -60,4 +76,30 @@
 .imgdtl{
 	height:40%;
 	width:20%;
+}
+
+.padear{
+	padding-left:29px;
+}
+.boton{
+	background-color: white; 
+    color: #7fb0ff;
+    padding: 1px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    border-radius: 20px;
+    border: 1px solid #4CAF50;
+}
+.txtlogd{
+	padding-left:660px;
+}
+
+.pdpls{
+	padding-right:10px;
+}
+
+frpls{
+	float:right;
 }

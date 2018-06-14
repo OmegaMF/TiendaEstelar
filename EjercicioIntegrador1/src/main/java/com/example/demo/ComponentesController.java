@@ -256,7 +256,6 @@ Connection connection;
 	
 	
 	@GetMapping("/eliminar-componente/{id}")
-	@ResponseBody
 	public String eliminarComponente(HttpSession session, Model template, @PathVariable int id) throws SQLException
 	{
 		
@@ -284,7 +283,7 @@ Connection connection;
 		
 		
 		
-		return "Que así sea";
+		return "redirect:/listadoComponentes";
 	}
 	
 	

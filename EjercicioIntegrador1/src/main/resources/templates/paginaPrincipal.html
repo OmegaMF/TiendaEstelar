@@ -40,9 +40,12 @@
     			<p>La tienda mas confiable de toda la galaxia</p>
     		</div>
     	</div>
-    	<div class="row">
-    	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="row" id="nav">
+    	
+    	
+    	<nav class="navbar navbar-light" style="background-color: #d7a0ef;">
+    	
+    	<div class="row" id="nav">
+      	
         <a class="navbar-brand" href="/">Tienda Estelar</a>
              
             
@@ -58,7 +61,13 @@
 				<input type="text" name="palabraBuscada"></input>
 				<input type="submit" value="Buscar"></input>
 			 </form>
+			 
+			 <div class="frpls">
+			
+			
 	          <div th:if="${estaLogeado} == true" > 
+	          
+			 
 		          <div class="txtlogd">
 		          	<a class="nav-link" href="/agregar-componente">Agregar Componente</a> 
 		          </div>
@@ -67,22 +76,22 @@
 		          	<a class="nav-link" href="/agregarAdministrador">Agregar Administrador</a> 
 		          </div>
 		          
-		          <div class="txtlogd">
-		          	<a class="nav-link" href="/logout">X</a> 
+		       	 <div class="txtlogd">
+		          	<a class="nav-link" href="/logout">Logout</a> 
 		          </div>
 	          </div>
-		          <div th:if="not ${estaLogeado}">
-		          	<a class="nav-link" href="/login">Login</a> 
-		          </div>
-		 
+		          
+		 		</div>
         </div>
     </nav>
-    </div>
+    
     	
     	<div class="row">
     		<div id="categorias" class="col-md-3 mt-4">
+    		
+    		<h3>Tipo de producto</h3><br></br>
     			
-                <a href="/busquedaT/placa">Placas de video</a><button class="button" type="button" data-toggle="collapse" data-target="#navbarResponsivePlacas" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+               <button class="button" type="button" data-toggle="collapse" data-target="#navbarResponsivePlacas" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 		        +</button>
 		        <div class="collapse navbar-collapse" id="navbarResponsivePlacas">
 		          <ul>
@@ -94,8 +103,9 @@
 		            </li>
 		           
 		          </ul>
-		        </div><br></br>
-                <a href="/busquedaT/procesador">Procesadores</a><button class="button" type="button" data-toggle="collapse" data-target="#navbarResponsiveProcesador" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+		        </div> <a href="/busquedaT/placa">Placas de video</a><br></br>
+		        
+               <button class="button" type="button" data-toggle="collapse" data-target="#navbarResponsiveProcesador" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 		        +</button>
 		        <div class="collapse navbar-collapse" id="navbarResponsiveProcesador">
 		          <ul>
@@ -107,12 +117,13 @@
 		            </li>
 		           
 		          </ul>
-		        </div><br></br>
-                <a href="/busquedaT/RAM">Memorias RAM</a><br></br>
+		        </div> <a href="/busquedaT/procesador">Procesadores</a><br></br>
+		        
+                <a class="padear" href="/busquedaT/RAM">Memorias RAM</a><br></br>
                 
-                <a href="/busquedaT/fuente">Fuentes</a><br></br>
+                <a class="padear" href="/busquedaT/fuente">Fuentes</a><br></br>
                 
-                <a href="/busquedaT/gabinete">Gabinetes</a><button class="button" type="button" data-toggle="collapse" data-target="#navbarResponsiveGabinetes" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="button" type="button" data-toggle="collapse" data-target="#navbarResponsiveGabinetes" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 		        +</button>
 		        <div class="collapse navbar-collapse" id="navbarResponsiveGabinetes">
 		          <ul>
@@ -134,8 +145,9 @@
 		            
 		           
 		          </ul>
-		        </div><br></br>
-                <a href="/busquedaT/motherboard">Motherboard</a>
+		        </div><a href="/busquedaT/gabinete">Gabinetes</a><br></br>
+		        
+                
                 <button class="button" type="button" data-toggle="collapse" data-target="#navbarResponsiveMother" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 		        +</button>
 		        <div class="collapse navbar-collapse" id="navbarResponsiveMother">
@@ -158,8 +170,9 @@
 		            
 		           
 		          </ul>
-		        </div><br></br>
-                <a href="/busquedaT/cooler">Cooler</a>
+		        </div><a href="/busquedaT/motherboard">Motherboard</a><br></br>
+		        
+                <a class="padear" href="/busquedaT/cooler">Cooler</a>
 		        
 		        </div>
     			
