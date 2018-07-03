@@ -34,6 +34,9 @@ Connection connection;
 		
 		
 		template.addAttribute("idUsuario", id);
+		
+
+		connection.close();
 		return "editarUsuario";
 	}
 	
@@ -70,6 +73,7 @@ Connection connection;
 		
 		
 
+		connection.close();
 		
 		return "detalleUsuario";
 	}
@@ -109,6 +113,8 @@ Connection connection;
 		template.addAttribute("listadoUsuarios", listadoUsuarios);
 
 		
+
+		connection.close();
 		return "listadoUsuarios";
 	}
 	
@@ -199,7 +205,8 @@ Connection connection;
 		
 		template.addAttribute("listadoUsuarios", listadoUsuarios);
 
-		
+
+		connection.close();
 		return "listadoUsuarios";
 	}
 	

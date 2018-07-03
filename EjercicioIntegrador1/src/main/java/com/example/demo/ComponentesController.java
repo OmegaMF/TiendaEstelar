@@ -282,7 +282,8 @@ Connection connection;
 	    }		
 		
 		
-		
+
+		connection.close();
 		return "redirect:/listadoComponentes";
 	}
 	
