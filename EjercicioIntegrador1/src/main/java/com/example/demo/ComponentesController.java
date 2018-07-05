@@ -28,40 +28,10 @@ public class ComponentesController
 	
 	
 	
-	
-	
-	
-	
 	@Autowired
 	private Environment env;
 	@Autowired private AdministradoresHelper AdministradoresHelper;
 	
-	
-	@GetMapping("/editarC/{id}")
-	public String editarC(HttpSession session, Model template, @PathVariable int id) throws SQLException
-	{
-Connection connection;
-		
-		connection=DriverManager.getConnection(env.getProperty("spring.datasource.url"),env.getProperty("spring.datasource.username"),env.getProperty("spring.datasource.password"));
-		
-		PreparedStatement consulta = 
-				connection.prepareStatement("SELECT * FROM componentes WHERE id=?;");
-		
-		consulta.setInt(1, id);
-		
-		template.addAttribute("idComponente", id);
-		Usuario logueado=AdministradoresHelper.usuarioLogueado(session);
-		if (logueado == null) {
-	        template.addAttribute("estaLogeado", false);
-	    } else {
-	        template.addAttribute("estaLogeado", true);
-	    }
-		
-
-		connection.close();
-		
-		return "editarC";
-	}
 	
 	
 	
@@ -250,7 +220,8 @@ Connection connection;
 	    }
 		
 		
-		
+
+		connection.close();
 		return "redirect:/listadoComponentes";
 	}
 	
